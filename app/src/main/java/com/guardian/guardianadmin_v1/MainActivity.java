@@ -20,38 +20,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new CountDownTimer(3000, 3000) {
+        new CountDownTimer(2600, 2600) {
 
             @Override
             public void onTick(long millisUntilFinished) {
-//                timer.setText(millisUntilFinished / 1000 + "s");
-                //here you can have your logic to set text to edittext
-
-
-
-                DisplayMetrics displayMetrics = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-                int height = displayMetrics.heightPixels;
-                int width = displayMetrics.widthPixels;
-
-//                ObjectAnimator textViewAnimator = ObjectAnimator.ofFloat(animateTextView, "translationY",0f,-(height/3.2f)); //700
-//                textViewAnimator.setDuration(3000);
-//                textViewAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-//                textViewAnimator.start();
-
-//                Intent intent2 = new Intent();
-//                startActivity(intent2);
-//                overridePendingTransition(animation_in_goes_here,animation_out_goes_here);
 
             }
 
 
             public void onFinish() {
-//                mTextField.setText("done!");
 
-//                Intent i = new Intent(MainActivity.this, SignUp.class);
-//                startActivity(i);
-//                finish();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

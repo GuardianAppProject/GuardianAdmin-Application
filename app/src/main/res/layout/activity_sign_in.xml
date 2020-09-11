@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="155dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,11 +19,12 @@
 
         <ImageView
             android:id="@+id/logo_SignUp"
-            android:layout_width="101dp"
-            android:layout_height="101dp"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo"
+            android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
 

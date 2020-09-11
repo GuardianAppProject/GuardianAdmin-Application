@@ -16,7 +16,7 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
     android:id="@+id/nav_header_imageView"
     android:layout_width="64dp"
     android:layout_height="64dp"
-    android:src="@drawable/logo" />
+    android:src="@drawable/icon" />
 
 <TextView
     android:id="@+id/nav_header_textView"
