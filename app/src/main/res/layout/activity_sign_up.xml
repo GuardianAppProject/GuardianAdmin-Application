@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    android:background="#F0F0F0"
+    android:layout_weight="1">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logo_SignUp"
+            android:layout_width="101dp"
+            android:layout_height="101dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo"/>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="75dp"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:text="نام کاربری"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toTopOf="@+id/username"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/hinttext_background"
+            android:padding="3dp"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLength="14"
+            android:nextFocusDown="@id/password"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginRight="54dp"
+            android:layout_marginLeft="54dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="75dp"
+            android:background="@drawable/hinttext_background"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="رمز عبور"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/passwordLock"
+            android:layout_width="18dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/padlock2"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="6dp" />
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="54dp"
+            android:layout_marginRight="54dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLength="14"
+            android:nextFocusDown="@id/password"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="75dp"
+            android:background="@drawable/hinttext_background"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="شماره تلفن همراه"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNum"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="54dp"
+            android:layout_marginRight="54dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLength="14"
+            android:nextFocusDown="@id/password"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/SignUpButt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/iran_sans"
+        android:text="ثبت نام"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+        tools:layout_editor_absoluteX="-16dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginLeft="62dp"/>
+
+    <Button
+        android:id="@+id/signUpIn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:background="#F0F0F0"
+        android:fontFamily="@font/iran_sans"
+        android:text="قبلا از گاردین استفاده کرده ام؛ ورود"
+        android:textColor="#505050"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpButt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
