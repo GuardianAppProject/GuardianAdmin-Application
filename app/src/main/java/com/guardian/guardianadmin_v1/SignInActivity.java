@@ -2,11 +2,14 @@ package com.guardian.guardianadmin_v1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.guardian.PasswordManager.AsteriskPasswordTransformationMethod;
 import com.guardian.PasswordManager.DoNothingTransformationMethod;
@@ -50,6 +53,28 @@ public class SignInActivity extends AppCompatActivity {
                     hidePassword = true;
                 }
 
+            }
+        });
+
+        final Button loginButton = findViewById(R.id.SignUpButt);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                loginResult = "asd";
+                onSignInClick(v);
+                try {
+                    signInProgress.setVisibility(View.VISIBLE);
+                    sleep(250);
+                    signInProgress.setVisibility(View.INVISIBLE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if(!isLoginResultValid()) return;
+//                saveToken(loginResult.substring(25));
+                write(loginResult.substring(37));
+                Toast.makeText(SignInActivity.this, loginResult.substring(37), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(SignInActivity.this, MainListActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }

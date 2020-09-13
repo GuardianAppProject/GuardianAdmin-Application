@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 if(!isRegisterResultValid()) return;
 
-                Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+                Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(i);
                 finish(); // baade signup moafagh koja bere?
             }
