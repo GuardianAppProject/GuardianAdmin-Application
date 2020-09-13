@@ -25,6 +25,8 @@ public class SignInActivity extends AppCompatActivity {
         edittext.setTransformationMethod(new AsteriskPasswordTransformationMethod());
 
         final ImageButton showPasswordBtn = findViewById(R.id.passwordLock);
+        signInProgress = findViewById(R.id.signUpProgress);
+
         showPasswordBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (hidePassword) {

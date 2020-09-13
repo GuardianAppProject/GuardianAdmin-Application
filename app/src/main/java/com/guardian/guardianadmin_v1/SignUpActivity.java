@@ -49,6 +49,8 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         final Button signUp = (Button) findViewById(R.id.SignUpButt);
+        signUpProgress = findViewById(R.id.signUpProgress);
+
         signUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 registerResult = "asd";
