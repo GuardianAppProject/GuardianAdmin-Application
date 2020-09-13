@@ -3,24 +3,21 @@ package com.guardian.guardianadmin_v1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.SigningInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guardian.PasswordManager.AsteriskPasswordTransformationMethod;
 import com.guardian.PasswordManager.DoNothingTransformationMethod;
 import com.guardian.guardianadmin_v1.Transmissions.LoginRegisterWorker;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
@@ -35,6 +32,10 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        TextView messageText = findViewById(R.id.messageTextSignIn);
+        messageText.setText("");
+
 
         final EditText edittext = (EditText) findViewById(R.id.password);
         edittext.setTransformationMethod(new AsteriskPasswordTransformationMethod());

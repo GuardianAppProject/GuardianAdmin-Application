@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.guardian.PasswordManager.AsteriskPasswordTransformationMethod;
 import com.guardian.PasswordManager.DoNothingTransformationMethod;
@@ -29,11 +30,16 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        if(TokenChecker.tokenIsValid()){
-            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
-            startActivity(i);
-            finish();
-        }
+
+
+        TextView messageText = findViewById(R.id.messageTextSignUp);
+        messageText.setText("");
+
+//        if(TokenChecker.tokenIsValid()){
+//            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+//            startActivity(i);
+//            finish();
+//        }
 
         final EditText edittext = (EditText) findViewById(R.id.password);
         edittext.setTransformationMethod(new AsteriskPasswordTransformationMethod());

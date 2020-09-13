@@ -59,7 +59,7 @@
             android:background="@drawable/edit_text_background"
             android:fontFamily="@font/iran_sans"
             android:gravity="center_horizontal|center_vertical"
-            android:maxLength="14"
+            android:maxLength="20"
             android:nextFocusDown="@id/password"
             android:singleLine="true"
             android:textAlignment="center"
@@ -118,7 +118,7 @@
             android:background="@drawable/edit_text_background"
             android:fontFamily="@font/iran_sans"
             android:gravity="center_horizontal|center_vertical"
-            android:maxLength="14"
+            android:maxLength="20"
             android:singleLine="true"
             android:textAlignment="center"
             android:textSize="17sp"
@@ -129,7 +129,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/messageTextSingIn"
+        android:id="@+id/messageTextSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

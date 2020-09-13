@@ -137,35 +137,58 @@ public class LoginRegisterWorker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         //toast = Toast.makeText(context,result,Toast.LENGTH_LONG);
         //toast.show();
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            sleep(500);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+
         if(result.startsWith("Success")){
             //bayad baade register e moafagh login  e moafagh ham dashte bashim
         }
 
-       /* TextView messageText = ((Activity)context).findViewById(R.id.messageTextSignUp);
-        if(result.contains("register complete")) {
-            messageText.setText("لطفا چند لحظه منتظر بمانید.");
-            messageText.setTextColor(context.getResources().getColor(R.color.colorPositiveError));
-        } else if(result.contains("invalid characters were detected")) {
-            messageText.setText("لطفا از کاراکتر های غیر مجاز مثل '*' و 'فاصله' استفاده نکنید.");
-            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
-        } else if(result.contains("username is invalid")) {
-            messageText.setText("شماره تلفن همراه وارد شده صحیح نمی باشد.");
-            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
-        } else if(result.contains("passwords must be at least")) {
-            messageText.setText("رمز عبور باید حداقل ۸ کاراکتر و شامل عدد و حروف انگلیسی باشد.");
-            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
-        } else if(result.contains("number is in use")) {
-            messageText.setText("شماره تلفن همراه وارد شده تکراری می باشد.");
-            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+        if( context instanceof SignUpActivity ) {
+            TextView messageText = ((Activity)context).findViewById(R.id.messageTextSignUp);
+            if(result.contains("register complete")) {
+                messageText.setText("لطفا چند لحظه منتظر بمانید.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorPositiveError));
+            } else if(result.contains("invalid characters were detected")) {
+                messageText.setText("لطفا از کاراکتر های غیر مجاز مثل '*' و 'فاصله' استفاده نکنید.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            } else if(result.contains("username is invalid")) {
+                messageText.setText("شماره تلفن همراه وارد شده صحیح نمی باشد.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            } else if(result.contains("passwords must be at least")) {
+                messageText.setText("رمز عبور باید حداقل ۸ کاراکتر و شامل عدد و حروف انگلیسی باشد.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            } else if(result.contains("number is in use")) {
+                messageText.setText("شماره تلفن همراه وارد شده تکراری می باشد.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            } else {
+                messageText.setText("سرور پاسخگو نمی باشد؛ لطفا چند دقیقه دیگر تلاش کنید.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            }
+
         } else {
-            messageText.setText("سرور پاسخگو نمی باشد؛ لطفا چند دقیقه دیگر تلاش کنید.");
-            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
-        }*/
+            TextView messageText = ((Activity)context).findViewById(R.id.messageTextSignIn);
+
+
+            if(result.contains("login complete")) {
+                messageText.setText("لطفا چند لحظه منتظر بمانید.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorPositiveError));
+            } else if(result.contains("invalid characters were detected")) {
+                messageText.setText("لطفا از کاراکتر های غیر مجاز مثل '*' و 'فاصله' استفاده نکنید.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            } else if(result.contains("login failed")) {
+                messageText.setText("نام کاربری یا رمز عبور صحیح نمی باشد.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            } else {
+                messageText.setText("سرور پاسخگو نمی باشد؛ لطفا چند دقیقه دیگر تلاش کنید.");
+                messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+            }
+        }
+
     }
 
     @Override
