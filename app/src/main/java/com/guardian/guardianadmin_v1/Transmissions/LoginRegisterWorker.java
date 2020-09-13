@@ -9,6 +9,7 @@ import android.widget.Toast;
 import static java.lang.Thread.sleep;
 
 import com.guardian.guardianadmin_v1.R;
+import com.guardian.guardianadmin_v1.SignInActivity;
 import com.guardian.guardianadmin_v1.SignUpActivity;
 
 import java.io.BufferedReader;
@@ -33,7 +34,7 @@ public class LoginRegisterWorker extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... strings) {
         String type = strings[0];
         String register_url = "http://www.guardianapp.ir/register747admin380.php" ;
-        String login_url = "";
+        String login_url = "http://www.guardianapp.ir/login_admin_111.php.php";
         if(type.equals("register")){
             try {
                 String username = strings[1];
@@ -114,7 +115,7 @@ public class LoginRegisterWorker extends AsyncTask<String,Void,String> {
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                SignUpActivity.setRegisterResult(result);
+                SignInActivity.setLoginResult(result);
                 System.err.println(result);
 
                 return result;
