@@ -62,9 +62,9 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 if(!isRegisterResultValid()) return;
 
-                /*Intent i = new Intent(SignUpActivity.this, SeatBelt.class);
+                Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
                 startActivity(i);
-                finish();*/ // baade signup moafagh koja bere?
+                finish(); // baade signup moafagh koja bere?
             }
         });
 
