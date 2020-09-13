@@ -35,11 +35,11 @@ public class SignUpActivity extends AppCompatActivity {
         TextView messageText = findViewById(R.id.messageTextSignUp);
         messageText.setText("");
 
-//        if(TokenChecker.tokenIsValid()){
-//            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
-//            startActivity(i);
-//            finish();
-//        }
+        if(TokenChecker.tokenIsValid()){
+            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+            startActivity(i);
+            finish();
+        }
 
         final EditText edittext = (EditText) findViewById(R.id.password);
         edittext.setTransformationMethod(new AsteriskPasswordTransformationMethod());
