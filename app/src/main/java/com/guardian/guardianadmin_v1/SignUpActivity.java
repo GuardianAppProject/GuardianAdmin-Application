@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.guardian.PasswordManager.AsteriskPasswordTransformationMethod;
 import com.guardian.PasswordManager.DoNothingTransformationMethod;
 import com.guardian.guardianadmin_v1.Transmissions.LoginRegisterWorker;
+import com.guardian.guardianadmin_v1.Transmissions.TokenChecker;
 
 import static java.lang.Thread.sleep;
 
@@ -28,6 +29,11 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        if(TokenChecker.tokenIsValid()){
+            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+            startActivity(i);
+            finish();
+        }
 
         final EditText edittext = (EditText) findViewById(R.id.password);
         edittext.setTransformationMethod(new AsteriskPasswordTransformationMethod());
