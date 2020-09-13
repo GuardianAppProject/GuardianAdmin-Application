@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.SigningInfo;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -35,11 +37,12 @@ public class SignUpActivity extends AppCompatActivity {
         TextView messageText = findViewById(R.id.messageTextSignUp);
         messageText.setText("");
 
-        if(TokenChecker.tokenIsValid()){
-            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
-            startActivity(i);
-            finish();
-        }
+//        if(TokenChecker.tokenIsValid()){
+//            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+//            startActivity(i);
+//            finish();
+//        }
+        final Button signUp = (Button) findViewById(R.id.SignUpButt);
 
         final EditText edittext = (EditText) findViewById(R.id.password);
         edittext.setTransformationMethod(new AsteriskPasswordTransformationMethod());
@@ -72,7 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-        final Button signUp = (Button) findViewById(R.id.SignUpButt);
+
         signUpProgress = findViewById(R.id.signUpProgress);
 
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +94,17 @@ public class SignUpActivity extends AppCompatActivity {
                 Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(i);
                 finish(); // baade signup moafagh koja bere?
+            }
+        });
+
+        EditText last = findViewById(R.id.phoneNum);
+        last.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    signUp.performClick();
+                }
+                return false;
             }
         });
 

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -90,6 +92,17 @@ public class SignInActivity extends AppCompatActivity {
                 Intent i = new Intent(SignInActivity.this, MainListActivity.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+
+        edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    loginButton.performClick();
+                }
+                return false;
             }
         });
     }
