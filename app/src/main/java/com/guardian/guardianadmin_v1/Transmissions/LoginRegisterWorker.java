@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static java.lang.Thread.sleep;
 
 import com.guardian.guardianadmin_v1.R;
 import com.guardian.guardianadmin_v1.SignUpActivity;
@@ -83,7 +84,6 @@ public class LoginRegisterWorker extends AsyncTask<String,Void,String> {
             try {
                 String username = strings[1];
                 String password = strings[2];
-                String phoneNum = strings[3];
 
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -136,6 +136,11 @@ public class LoginRegisterWorker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         //toast = Toast.makeText(context,result,Toast.LENGTH_LONG);
         //toast.show();
+        try {
+            sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if(result.startsWith("Success")){
             //bayad baade register e moafagh login  e moafagh ham dashte bashim
         }
