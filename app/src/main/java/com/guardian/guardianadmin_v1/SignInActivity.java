@@ -3,6 +3,7 @@ package com.guardian.guardianadmin_v1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.SigningInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,19 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
+
+        Button signUp = (Button) findViewById(R.id.signInUp);
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent i = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(i);
+                finish();
+
+            }
+        });
+
 
         final Button loginButton = findViewById(R.id.SignUpButt);
         loginButton.setOnClickListener(new View.OnClickListener() {
