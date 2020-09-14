@@ -67,17 +67,52 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="140dp"
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/iran_sans"
-                android:paddingRight="10dp"
-                android:text="سینا الهی منش"
-                android:textSize="16sp"
+                android:orientation="vertical"
+                android:paddingRight="6dp"
+                android:layout_marginTop="9dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginRight="7dp"/>
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:paddingRight="10dp"
+                    android:text="سینا الهی منش"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/phoneNumberTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:textAlignment="center"
+                    android:paddingRight="10dp"
+                    android:text="۰۹۳۰۵۰۰۶۰۳۶"
+                    android:layout_gravity="center"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/iran_sans"-->
+<!--                android:paddingRight="10dp"-->
+<!--                android:text="سینا الهی منش"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/imageView"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:layout_marginRight="7dp"/>-->
 
 
             <LinearLayout

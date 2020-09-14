@@ -18,17 +18,19 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     private ArrayList<UserList> data;
     private LayoutInflater inflater;
+    private OnItemListener mOnItemListener;
 
 
-    public UserListAdapter(Context context, ArrayList<UserList> data) {
+    public UserListAdapter(Context context, ArrayList<UserList> data, OnItemListener onItemListener) {
         this.data = data;
         this.inflater = LayoutInflater.from(context);
+        this.mOnItemListener = onItemListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.driver_row, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.driver_row, parent, false), mOnItemListener);
     }
 
     @Override
@@ -45,20 +47,34 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView nameTextView;
         TextView phoneNumberTextView;
         TextView speedTextView;
         TextView averageTextView;
 
-        ViewHolder(View itemView) {
+        OnItemListener onItemListener;
+
+        ViewHolder(View itemView, OnItemListener onItemListener) {
             super(itemView);
+
+            this.onItemListener = onItemListener;
 
             nameTextView = itemView.findViewById(R.id.nameTextView);
             phoneNumberTextView = itemView.findViewById(R.id.phoneNumberTextView);
             speedTextView = itemView.findViewById(R.id.speedTextView);
             averageTextView = itemView.findViewById(R.id.averageTextView);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onItemListener.onItemClick(getAdapterPosition());
         }
     }
 
+    public interface OnItemListener {
+        void onItemClick(int position);
+    }
 }

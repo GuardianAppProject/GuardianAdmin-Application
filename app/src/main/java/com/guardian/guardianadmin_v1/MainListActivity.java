@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.guardian.guardianadmin_v1.UserModels.UserList;
 import com.guardian.guardianadmin_v1.UserModels.UserListAdapter;
 
-public class MainListActivity extends AppCompatActivity {
+public class MainListActivity extends AppCompatActivity implements UserListAdapter.OnItemListener {
 
 
     // Menu
@@ -48,7 +48,7 @@ public class MainListActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        UserListAdapter adapter = new UserListAdapter(this, UserList.getAllUsers());
+        UserListAdapter adapter = new UserListAdapter(this, UserList.getAllUsers(), this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -128,5 +128,14 @@ public class MainListActivity extends AppCompatActivity {
         // Close the navigation drawer
         mDrawer.closeDrawers();
 
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(this, MainUserActivity.class);
+        System.out.println("pos: " + position);
+        intent.putExtra("username", UserList.getAllUsers().get(position).getPhoneNumber());
+        startActivity(intent);
+        finish();
     }
 }
