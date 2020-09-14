@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.guardian.PasswordManager.AsteriskPasswordTransformationMethod;
-import com.guardian.PasswordManager.DoNothingTransformationMethod;
+import com.guardian.guardianadmin_v1.PasswordManager.AsteriskPasswordTransformationMethod;
+import com.guardian.guardianadmin_v1.PasswordManager.DoNothingTransformationMethod;
 import com.guardian.guardianadmin_v1.Transmissions.LoginRegisterWorker;
 
 import java.io.FileInputStream;

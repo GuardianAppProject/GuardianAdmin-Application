@@ -1,9 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyAccount">
+    tools:context=".MyAccount"
+    android:background="#D4D4D4"
+    android:layout_weight="1"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:layout_marginTop="55dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.78"
+        android:background="#E8E8E8"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="#839BF8">
+
+            <ImageButton
+                android:background="@drawable/back_icon"
+                android:layout_height="18dp"
+                android:layout_width="12dp"
+                android:layout_marginTop="8dp"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/backButton">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:text="حساب کاربری من"
+                android:textAlignment="center"
+                android:padding="6dp"
+                android:textSize="16dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/ebtekar"
+                android:gravity="center_horizontal" >
+
+            </TextView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="اطلاعات حساب کاربری"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:fontFamily="@font/iran_sans"
+            android:layout_marginTop="15dp"
+            android:textColor="#B4000000"/>
+
+        <View
+            android:layout_height="0.7dp"
+            android:layout_width="150dp"
+            android:background="#7E7E7E"
+            android:layout_gravity="center"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="4dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="right"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
+
+            <TextView
+                android:id="@+id/username_accountField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/text5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:paddingRight="72dp"/>
+
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right"
+                android:text="نام کاربری:"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="right"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
+
+            <TextView
+                android:id="@+id/password_accountField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/text6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:paddingRight="86dp"/>
+
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right"
+                android:text="رمز عبور:"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="right"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
+
+            <TextView
+                android:id="@+id/phoneNum_accountField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/text7"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                android:paddingRight="30dp"/>
+
+            <TextView
+                android:id="@+id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:fontFamily="@font/iran_sans"
+                android:gravity="right"
+                android:text="شماره تلفن همراه:"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تغییر رمز عبور"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:fontFamily="@font/iran_sans"
+            android:layout_marginTop="17dp"
+            android:textColor="#B4000000"/>
+
+        <View
+            android:layout_height="0.7dp"
+            android:layout_width="150dp"
+            android:background="#7E7E7E"
+            android:layout_gravity="center"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="رمز عبور جدید را وارد نمایید."
+            android:textSize="15sp"
+            android:gravity="center"
+            android:fontFamily="@font/iran_sans"
+            android:layout_marginTop="12dp" />
+
+        <EditText
+
+            android:id="@+id/newPassword"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="70dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/iran_sans"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="password"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:textSize="17sp"
+            android:paddingTop="5dp"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/messageTextAccount"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="#25BD25"
+            android:textSize="12sp"
+            android:paddingRight="6dp"
+            android:paddingLeft="6dp"
+            android:fontFamily="@font/iran_sans"/>
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/button_background"
+            android:text="ویرایش اطلاعات"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/iran_sans"
+            android:textSize="16sp"/>
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:background="#D2FF4866"
+        android:fontFamily="@font/iran_sans"
+        android:padding="2dp"
+        android:alpha="0.85"
+        android:text="خروج از حساب کاربری"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>

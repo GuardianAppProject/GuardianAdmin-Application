@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.guardian.guardianadmin_v1.Transmissions.TokenChecker;
@@ -24,6 +26,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final Button retryButton = findViewById(R.id.retryButton);
+
+        retryButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(!GPSAndInternetChecker.check(MainActivity.this)) {
+                    retryButton.setVisibility(View.VISIBLE);
+                } else {
+
+                    retryButton.setVisibility(View.INVISIBLE);
+                    startApp();
+                }
+            }
+        });
+
+        if(!GPSAndInternetChecker.check(MainActivity.this)) {
+            retryButton.setVisibility(View.VISIBLE);
+
+        }
+
+        if(retryButton.getVisibility()==View.INVISIBLE) {
+            startApp();
+        }
+
+
+
+    }
+
+
+    private void startApp(){
+
         TokenChecker.beginCheck(read(),this);
 
         new CountDownTimer(2600, 2600) {
@@ -48,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }.start();
-
     }
 
     public String read(){

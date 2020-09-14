@@ -3,7 +3,6 @@ package com.guardian.guardianadmin_v1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.SigningInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,8 +13,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.guardian.PasswordManager.AsteriskPasswordTransformationMethod;
-import com.guardian.PasswordManager.DoNothingTransformationMethod;
+import com.guardian.guardianadmin_v1.PasswordManager.AsteriskPasswordTransformationMethod;
+import com.guardian.guardianadmin_v1.PasswordManager.DoNothingTransformationMethod;
+
 import com.guardian.guardianadmin_v1.Transmissions.LoginRegisterWorker;
 import com.guardian.guardianadmin_v1.Transmissions.TokenChecker;
 
@@ -37,11 +37,11 @@ public class SignUpActivity extends AppCompatActivity {
         TextView messageText = findViewById(R.id.messageTextSignUp);
         messageText.setText("");
 
-//        if(TokenChecker.tokenIsValid()){
-//            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
-//            startActivity(i);
-//            finish();
-//        }
+        if(TokenChecker.tokenIsValid()){
+            Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+            startActivity(i);
+            finish();
+        }
         final Button signUp = (Button) findViewById(R.id.SignUpButt);
 
         final EditText edittext = (EditText) findViewById(R.id.password);
