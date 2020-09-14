@@ -3,6 +3,8 @@ package com.guardian.guardianadmin_v1;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
+import com.guardian.guardianadmin_v1.UserModels.UserList;
+import com.guardian.guardianadmin_v1.UserModels.UserListAdapter;
 
 public class MainListActivity extends AppCompatActivity {
 
@@ -40,6 +44,12 @@ public class MainListActivity extends AppCompatActivity {
                 openDrawer();
             }
         });
+
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        UserListAdapter adapter = new UserListAdapter(this, UserList.getAllUsers());
+        recyclerView.setAdapter(adapter);
     }
 
 

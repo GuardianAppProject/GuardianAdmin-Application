@@ -1,43 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_height="60dp"
-    android:padding="15dp"
-    android:layoutDirection="rtl"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:paddingBottom="12dp"
+    android:paddingTop="12dp"
+    android:paddingRight="14dp"
+    android:paddingLeft="46dp"
     android:background="@drawable/item_background">
 
 
     <ImageView
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:id="@+id/imageView3"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         android:src="@drawable/account_circle"
-        android:layout_marginRight="7dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="5dp"/>
 
-    <TextView
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:text="سینا الهی منش"
-        android:paddingRight="10dp"
-        android:fontFamily="@font/iran_sans"
-        android:textSize="16sp"/>
-
-
-    <TextView
-        android:layout_width="88dp"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:layout_height="wrap_content"
-        android:text="105 km/h"
-        android:fontFamily="@font/iran_sans"
-        android:textSize="12sp" />
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="6dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans"
+            android:paddingRight="10dp"
+            android:text="سینا الهی منش"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/phoneNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iran_sans"
+            android:textAlignment="center"
+            android:paddingRight="10dp"
+            android:text="۰۹۳۰۵۰۰۶۰۳۶"
+            android:layout_gravity="center"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/speedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/iran_sans"
+        android:text="۱۰۵ km/h"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:layout_marginRight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/averageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/product_sans_bold"
         android:text="96% بسیار ایمن"
+        android:textAlignment="center"
         android:textSize="16sp"
-        android:fontFamily="@font/product_sans_bold"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
