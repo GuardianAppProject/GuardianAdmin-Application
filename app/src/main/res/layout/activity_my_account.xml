@@ -33,7 +33,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:background="#839BF8">
+            android:background="#9CAEF4">
 
             <ImageButton
                 android:background="@drawable/back_icon"
@@ -288,7 +288,7 @@
         android:background="#D2FF4866"
         android:fontFamily="@font/iran_sans"
         android:padding="2dp"
-        android:alpha="0.85"
+        android:alpha="0.86"
         android:text="خروج از حساب کاربری"
         android:textColor="#ffffff"
         android:textSize="16sp" />

@@ -14,7 +14,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:background="@drawable/top_title_gradient"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +35,8 @@
 
             <Button
                 android:id="@+id/menuButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="22.5dp"
+                android:layout_height="22.5dp"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/menu_icon"
                 android:padding="10dp"
