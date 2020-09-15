@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,16 +16,18 @@ import com.guardian.guardianadmin_v1.R;
 
 import java.util.ArrayList;
 
-public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> implements Filterable {
 
     private ArrayList<UserList> data;
     private LayoutInflater inflater;
     private OnItemListener mOnItemListener;
+    private ArrayList<UserList> dataFiltered;
 
 
     public UserListAdapter(Context context, ArrayList<UserList> data, OnItemListener onItemListener) {
         this.data = data;
         this.inflater = LayoutInflater.from(context);
+        this.dataFiltered = data;
         this.mOnItemListener = onItemListener;
     }
 
@@ -76,5 +80,43 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
     public interface OnItemListener {
         void onItemClick(int position);
+    }
+
+    @Override
+    public Filter getFilter() {
+
+        Filter filter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults filterResults = new FilterResults();
+
+                if(constraint == null | constraint.length() == 0) {
+                    filterResults.count = dataFiltered.size();
+                    filterResults.values = dataFiltered;
+                } else {
+                    String searchChar = constraint.toString().toLowerCase();
+                    ArrayList<UserList> resultData = new ArrayList<>();
+
+                    for (UserList user : dataFiltered) {
+                        if(user.getName().toLowerCase().contains(searchChar)) {
+                            resultData.add(user);
+                        } else if(user.getPhoneNumber().toLowerCase().contains(searchChar)) {
+                            resultData.add(user);
+                        }
+                    }
+                    filterResults.count = resultData.size();
+                    filterResults.values = resultData;
+                }
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                data = (ArrayList<UserList>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+        return filter;
     }
 }

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         TokenChecker.beginCheck(read(),this);
 
-        new CountDownTimer(2360, 2360) {
+        new CountDownTimer(2500, 2500) {
 
             @Override
             public void onTick(long millisUntilFinished) {

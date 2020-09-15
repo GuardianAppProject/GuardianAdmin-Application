@@ -30,9 +30,9 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="14dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="14dp"
             android:background="@drawable/back_icon"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -44,14 +44,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="465dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/item_background"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="vertical"
-        android:background="@drawable/item_background">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -72,9 +72,9 @@
                 android:id="@+id/linearLayout11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
                 android:orientation="vertical"
                 android:paddingRight="6dp"
-                android:layout_marginTop="9dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent">
@@ -83,64 +83,64 @@
                     android:id="@+id/usernameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/iran_sans"
                     android:paddingRight="10dp"
                     android:text="سینا الهی منش"
                     android:textAlignment="center"
-                    android:layout_gravity="center"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/phoneNumberTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/iran_sans"
-                    android:textAlignment="center"
                     android:paddingRight="10dp"
                     android:text="۰۹۳۰۵۰۰۶۰۳۶"
-                    android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:textSize="12sp" />
 
             </LinearLayout>
-<!--            <TextView-->
-<!--                android:layout_width="140dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="@font/iran_sans"-->
-<!--                android:paddingRight="10dp"-->
-<!--                android:text="سینا الهی منش"-->
-<!--                android:textSize="16sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/imageView"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                android:layout_marginRight="7dp"/>-->
+            <!--            <TextView-->
+            <!--                android:layout_width="140dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:fontFamily="@font/iran_sans"-->
+            <!--                android:paddingRight="10dp"-->
+            <!--                android:text="سینا الهی منش"-->
+            <!--                android:textSize="16sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toStartOf="@+id/imageView"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                android:layout_marginRight="7dp"/>-->
 
 
             <LinearLayout
                 android:layout_width="90dp"
                 android:layout_height="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginLeft="18dp"
                 android:background="@drawable/border_background"
                 android:orientation="vertical"
-                android:padding="4dp">
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/product_sans_bold"
                     android:text="96%"
-                    android:layout_gravity="center"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/product_sans_bold"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textSize="13sp"
+                    android:fontFamily="@font/iran_sans"
                     android:text="بسیار ایمن"
-                    android:fontFamily="@font/iran_sans"/>
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -149,8 +149,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="381dp"
-            android:padding="20dp"
-            android:layoutDirection="rtl">
+            android:layoutDirection="rtl"
+            android:padding="20dp">
 
             <LinearLayout
                 android:id="@+id/linearLayout2"

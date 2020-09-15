@@ -1,6 +1,8 @@
 package com.guardian.guardianadmin_v1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +25,10 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
     // Menu
     private DrawerLayout mDrawer;
     private NavigationView nvDrawer;
+
+
+    // Adapter
+    UserListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +55,12 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        UserListAdapter adapter = new UserListAdapter(this, UserList.getAllUsers(), this);
+        adapter = new UserListAdapter(this, UserList.getAllUsers(), this);
         recyclerView.setAdapter(adapter);
+
+        Toolbar toolbar2 = findViewById(R.id.toolbar2);
+        this.setSupportActionBar(toolbar2);
+        this.getSupportActionBar().setTitle("");
     }
 
 
@@ -62,6 +73,10 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         // The action bar home/up action should open or close the drawer.
         if (item.getItemId() == android.R.id.home) {
             mDrawer.openDrawer(GravityCompat.START);
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_search) {
             return true;
         }
 
@@ -138,4 +153,35 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+
+        return true;
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == R.id.action_search) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
