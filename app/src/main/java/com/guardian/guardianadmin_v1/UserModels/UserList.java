@@ -1,6 +1,13 @@
 package com.guardian.guardianadmin_v1.UserModels;
 
+import com.guardian.guardianadmin_v1.MainActivity;
+import com.guardian.guardianadmin_v1.Transmissions.AllPhoneGetter;
+
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 public class UserList {
 
@@ -11,6 +18,8 @@ public class UserList {
     private double speed;
 
     private static ArrayList<UserList> allUsers = new ArrayList<>();
+
+    private static ArrayList<String> allPhoneNumbers = new ArrayList<>();
 
     public UserList(String name, String phoneNumber, double average, double speed) {
         setName(name);
@@ -38,6 +47,8 @@ public class UserList {
     }
 
     public static ArrayList<UserList> getAllUsers() {
+        updatePhoneNumbers();
+        //inja miaim user haro migirim
         if(allUsers.isEmpty()) {
             allUsers.add(new UserList("ali", "0912433434", 45, 120));
             allUsers.add(new UserList("ali2", "0912433434", 45, 120));
@@ -67,4 +78,20 @@ public class UserList {
     public double getSpeed() {
         return speed;
     }
+
+    private static void updatePhoneNumbers(){
+        AllPhoneGetter.updateData(MainActivity.getToken());
+        try{
+            sleep(500);
+        }catch (Exception e){
+
+        }
+        System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+        System.out.println(allPhoneNumbers);
+    }
+
+    public static void setAllPhoneNumbers(ArrayList<String> allPhoneNumbers) {
+        UserList.allPhoneNumbers = allPhoneNumbers;
+    }
+
 }

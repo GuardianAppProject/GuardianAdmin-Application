@@ -6,8 +6,8 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 
-import com.guardian.guardianadmin_v1.MainActivity;
 import com.guardian.guardianadmin_v1.SignInActivity;
+import com.guardian.guardianadmin_v1.UserModels.UserList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,17 +20,20 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
-public class SingleUserWorker extends AsyncTask<String,Void,String> {
+public class AllPhoneGetter extends AsyncTask<String,Void,String> {
+
+    private Toast toast;
     private static String ans="asd";
 
-    public SingleUserWorker() {
+    public AllPhoneGetter() {
     }
 
     @Override
     protected String doInBackground(String... strings) {
         String type = strings[0];
-        String login_url = "http://www.guardianapp.ir/check_admin_token_55.php";
+        String login_url = "http://www.guardianapp.ir/get_all_nums.php";
         if (type.equals("check")) {
             try {
                 String token = strings[1];
@@ -91,8 +94,22 @@ public class SingleUserWorker extends AsyncTask<String,Void,String> {
         super.onProgressUpdate(values);
     }
 
-    public static boolean tokenIsValid(){
-        return ans.startsWith("Connected - True");
+    public static void updateData(String token){
+        AllPhoneGetter getter = new AllPhoneGetter();
+        getter.execute("check",token);
+        String[] rawServerData = ans.split(" ");
+        if(!ans.startsWith("Connected - ")){
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+            return;
+        }
+        ArrayList<String> numbers = new ArrayList<>();
+
+        for(int i=2;i<rawServerData.length;i++){
+            numbers.add(rawServerData[i]);
+        }
+
+        UserList.setAllPhoneNumbers(numbers);
     }
+
 
 }

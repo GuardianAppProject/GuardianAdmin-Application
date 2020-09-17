@@ -142,7 +142,7 @@ public class SignInActivity extends AppCompatActivity {
             OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
             outputWriter.write(toWrite);
             outputWriter.close();
-
+            MainActivity.setToken(toWrite);
             //display file saved message
 
         } catch (Exception e) {

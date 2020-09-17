@@ -19,6 +19,15 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
+    private static String token;
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void setToken(String token) {
+        MainActivity.token = token;
+    }
 
     private static int TIME_OUT = 2500; //Time to launch the another activity
 

@@ -19,6 +19,9 @@ import com.guardian.guardianadmin_v1.PasswordManager.DoNothingTransformationMeth
 import com.guardian.guardianadmin_v1.Transmissions.LoginRegisterWorker;
 import com.guardian.guardianadmin_v1.Transmissions.TokenChecker;
 
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
 import static java.lang.Thread.sleep;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -39,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(TokenChecker.tokenIsValid()){
             Intent i = new Intent(SignUpActivity.this, MainListActivity.class);
+            MainActivity.setToken(read());
             startActivity(i);
             finish();
         }
@@ -138,5 +142,29 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean isRegisterResultValid(){
         return registerResult.contains("register complete");
+    }
+
+    public String read(){
+        //reading text from file
+        String string = "";
+        try {
+            FileInputStream fileIn=openFileInput("tokenFile.txt");
+            InputStreamReader InputRead= new InputStreamReader(fileIn);
+
+            char[] inputBuffer= new char[10000];
+
+            int charRead;
+
+            while ((charRead=InputRead.read(inputBuffer))>0) {
+                // char to string conversion
+                String readstring=String.copyValueOf(inputBuffer,0,charRead);
+                string +=readstring;
+            }
+            InputRead.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return string;
     }
 }

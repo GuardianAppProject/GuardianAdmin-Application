@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 
+import com.guardian.guardianadmin_v1.MainActivity;
 import com.guardian.guardianadmin_v1.SignInActivity;
 
 import java.io.BufferedReader;
@@ -103,7 +104,7 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
         return ans.startsWith("Connected - True");
     }
 
-    public static String getUsername(){
+    /*public static String getUsername(){
         if(tokenIsValid())
             return ans.substring(17).split(" ")[1];
         return "asd";
@@ -119,5 +120,5 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
         if(tokenIsValid())
             return ans.substring(17).split(" ")[2];
         return "asd";
-    }
+    }*/
 }
