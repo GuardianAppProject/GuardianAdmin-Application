@@ -33,7 +33,7 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
         String type = strings[0];
-        String login_url = "http://www.guardianapp.ir/check_admin_token_55.php";
+        String login_url = "https://www.guardianapp.ir/check_admin_token_55.php";
         if (type.equals("check")) {
             try {
                 String token = strings[1];
