@@ -6,6 +6,7 @@ import com.guardian.guardianadmin_v1.Transmissions.AllPhoneGetter;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.Thread.sleep;
 
@@ -19,7 +20,7 @@ public class UserList {
 
     private static ArrayList<UserList> allUsers = new ArrayList<>();
 
-    private static ArrayList<String> allPhoneNumbers = new ArrayList<>();
+    private static ArrayList<String> allPhoneNumbers;
 
     public UserList(String name, String phoneNumber, double average, double speed) {
         setName(name);
@@ -47,6 +48,7 @@ public class UserList {
     }
 
     public static ArrayList<UserList> getAllUsers() {
+        allPhoneNumbers = new ArrayList<>();
         updatePhoneNumbers();
         //inja miaim user haro migirim
         if(allUsers.isEmpty()) {

@@ -22,6 +22,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 public class AllPhoneGetter extends AsyncTask<String,Void,String> {
 
     private Toast toast;
@@ -97,9 +99,14 @@ public class AllPhoneGetter extends AsyncTask<String,Void,String> {
     public static void updateData(String token){
         AllPhoneGetter getter = new AllPhoneGetter();
         getter.execute("check",token);
+        try{
+            sleep(500);
+        }catch (Exception e){
+
+        }
+        System.out.println(ans);
         String[] rawServerData = ans.split(" ");
         if(!ans.startsWith("Connected - ")){
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
             return;
         }
         ArrayList<String> numbers = new ArrayList<>();
