@@ -21,58 +21,58 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class SingleUserWorker extends AsyncTask<String,Void,String> {
-    private static String ans="asd";
+public class SingleUserWorker extends AsyncTask<String, Void, String> {
+    private static String ans = "asd";
 
     public SingleUserWorker() {
     }
 
     @Override
     protected String doInBackground(String... strings) {
-        String type = strings[0];
+
         String login_url = "https://www.guardianapp.ir/get_1_user_data.php";
-        if (type.equals("check")) {
-            try {
-                String token = strings[1];
 
-                URL url = new URL(login_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
+        try {
+            String token = strings[0];
+            String number = strings[1];
 
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            URL url = new URL(login_url);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
 
-                String post_data = URLEncoder.encode("token", "UTF-8") + "=" + URLEncoder.encode(token, "UTF-8") ;
+            OutputStream outputStream = httpURLConnection.getOutputStream();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                bufferedWriter.write(post_data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
+            String post_data = URLEncoder.encode("token","UTF-8")+"="+URLEncoder.encode(token,"UTF-8")+"&"+URLEncoder.encode("number","UTF-8")+"="+URLEncoder.encode(number,"UTF-8");
+            bufferedWriter.write(post_data);
+            bufferedWriter.flush();
+            bufferedWriter.close();
+            outputStream.close();
 
-                InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
 
-                String result = "";
-                String line = "";
+            String result = "";
+            String line = "";
 
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                }
-
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                System.err.println(result);
-                ans = result;
-                return result;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line;
             }
+
+            bufferedReader.close();
+            inputStream.close();
+            httpURLConnection.disconnect();
+            System.err.println(result);
+            ans = result;
+            return result;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
         return null;
     }
@@ -91,8 +91,12 @@ public class SingleUserWorker extends AsyncTask<String,Void,String> {
         super.onProgressUpdate(values);
     }
 
-    public static boolean tokenIsValid(){
-        return ans.startsWith("Connected - True");
+    public static String[] getUserByNum(String token,String number){
+
+
+
+
+        return null;
     }
 
 }
