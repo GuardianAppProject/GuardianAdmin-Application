@@ -52,11 +52,11 @@ public class UserList {
         updatePhoneNumbers();
         //inja miaim user haro migirim
         if(allUsers.isEmpty()) {
-            allUsers.add(new UserList("ali", "0912433434", 45, 120));
-            allUsers.add(new UserList("ali2", "0912433434", 45, 120));
+            new UserList("ali", "0912433434", 45, 120);
+            /*allUsers.add(new UserList("ali2", "0912433434", 45, 120));
             allUsers.add(new UserList("ali3", "0912433434", 45, 120));
             allUsers.add(new UserList("ali4", "0912433434", 45, 120));
-            allUsers.add(new UserList("ali5", "0912433434", 45, 120));
+            allUsers.add(new UserList("ali5", "0912433434", 45, 120));*/
         }
         return allUsers;
     }
@@ -88,7 +88,6 @@ public class UserList {
         }catch (Exception e){
 
         }
-        System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
         System.out.println(allPhoneNumbers);
     }
 

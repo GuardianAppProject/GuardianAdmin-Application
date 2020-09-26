@@ -111,7 +111,7 @@ public class AllPhoneGetter extends AsyncTask<String,Void,String> {
         }
         ArrayList<String> numbers = new ArrayList<>();
 
-        for(int i=2;i<rawServerData.length;i++){
+        for(int i=2;i<rawServerData.length-1;i++){
             numbers.add(rawServerData[i]);
         }
 
