@@ -26,7 +26,6 @@ import java.net.URLEncoder;
 
 public class LoginRegisterWorker extends AsyncTask<String,Void,String> {
     Context context;
-    private Toast toast;
     public LoginRegisterWorker(Context ctx){
         context = ctx;
     }

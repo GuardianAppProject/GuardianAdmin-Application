@@ -2,6 +2,7 @@ package com.guardian.guardianadmin_v1.UserModels;
 
 import com.guardian.guardianadmin_v1.MainActivity;
 import com.guardian.guardianadmin_v1.Transmissions.AllPhoneGetter;
+import com.guardian.guardianadmin_v1.Transmissions.SingleUserWorker;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -53,10 +54,6 @@ public class UserList {
         //inja miaim user haro migirim
         if(allUsers.isEmpty()) {
             new UserList("ali", "0912433434", 45, 120);
-            /*allUsers.add(new UserList("ali2", "0912433434", 45, 120));
-            allUsers.add(new UserList("ali3", "0912433434", 45, 120));
-            allUsers.add(new UserList("ali4", "0912433434", 45, 120));
-            allUsers.add(new UserList("ali5", "0912433434", 45, 120));*/
         }
         return allUsers;
     }
@@ -84,11 +81,19 @@ public class UserList {
     private static void updatePhoneNumbers(){
         AllPhoneGetter.updateData(MainActivity.getToken());
         try{
-            sleep(500);
+            sleep(100);
         }catch (Exception e){
 
         }
         System.out.println(allPhoneNumbers);
+        for(String number : allPhoneNumbers){
+            String[] user = SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
+            if(user == null)
+                continue;
+            if(user.length != 4)
+                continue;
+            new UserList(user[1],user[0],Double.parseDouble(user[3]),Double.parseDouble(user[2]));
+        }
     }
 
     public static void setAllPhoneNumbers(ArrayList<String> allPhoneNumbers) {

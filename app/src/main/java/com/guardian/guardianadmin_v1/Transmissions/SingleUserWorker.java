@@ -20,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import static java.lang.Thread.sleep;
 
 public class SingleUserWorker extends AsyncTask<String, Void, String> {
     private static String ans = "asd";
@@ -93,10 +94,23 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
 
     public static String[] getUserByNum(String token,String number){
 
+        SingleUserWorker singleUserWorker = new SingleUserWorker();
+        singleUserWorker.execute(token,number);
+        try {
+            sleep(100);
+        }catch (Exception e){
 
+        }
+        if(ans.split(" ").length != 6){
+            return null;
+        }
 
-
-        return null;
+        String[] retVal = new String[4];
+        retVal[0] = number;
+        retVal[1] = ans.split(" ")[3];
+        retVal[2] = ans.split(" ")[4];
+        retVal[3] = ans.split(" ")[5];
+        return retVal;
     }
 
 }
