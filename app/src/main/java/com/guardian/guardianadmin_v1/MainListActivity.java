@@ -34,6 +34,7 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_list);
+        //UserList.updatePhoneNumbers();
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 

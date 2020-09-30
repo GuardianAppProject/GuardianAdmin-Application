@@ -96,11 +96,11 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
 
         SingleUserWorker singleUserWorker = new SingleUserWorker();
         singleUserWorker.execute(token,number);
-        try {
+        /*try {
             sleep(100);
         }catch (Exception e){
 
-        }
+        }*/
         if(ans.split(" ").length != 6){
             return null;
         }

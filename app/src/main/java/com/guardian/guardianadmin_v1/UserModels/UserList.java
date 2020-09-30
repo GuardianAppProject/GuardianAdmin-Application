@@ -21,8 +21,6 @@ public class UserList {
 
     private static ArrayList<UserList> allUsers = new ArrayList<>();
 
-    private static ArrayList<String> allPhoneNumbers;
-
     public UserList(String name, String phoneNumber, double average, double speed) {
         setName(name);
         setPhoneNumber(phoneNumber);
@@ -49,7 +47,7 @@ public class UserList {
     }
 
     public static ArrayList<UserList> getAllUsers() {
-        allPhoneNumbers = new ArrayList<>();
+
         updatePhoneNumbers();
         //inja miaim user haro migirim
         if(allUsers.isEmpty()) {
@@ -78,8 +76,10 @@ public class UserList {
         return speed;
     }
 
-    private static void updatePhoneNumbers(){
+    public static void updatePhoneNumbers(){
+        ArrayList<String> allPhoneNumbers;
         AllPhoneGetter.updateData(MainActivity.getToken());
+        allPhoneNumbers = AllPhoneGetter.getAllPhoneNumbers();
         try{
             sleep(100);
         }catch (Exception e){
@@ -87,7 +87,14 @@ public class UserList {
         }
         System.out.println(allPhoneNumbers);
         for(String number : allPhoneNumbers){
+            SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
+            try {
+                sleep(300);
+            }catch (Exception e){
+
+            }
             String[] user = SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
+            System.out.println(Arrays.toString(user));
             if(user == null)
                 continue;
             if(user.length != 4)
@@ -96,8 +103,5 @@ public class UserList {
         }
     }
 
-    public static void setAllPhoneNumbers(ArrayList<String> allPhoneNumbers) {
-        UserList.allPhoneNumbers = allPhoneNumbers;
-    }
 
 }

@@ -100,7 +100,7 @@ public class AllPhoneGetter extends AsyncTask<String,Void,String> {
         AllPhoneGetter getter = new AllPhoneGetter();
         getter.execute("check",token);
         try{
-            sleep(500);
+            sleep(200);
         }catch (Exception e){
 
         }
@@ -114,9 +114,12 @@ public class AllPhoneGetter extends AsyncTask<String,Void,String> {
         for(int i=2;i<rawServerData.length-1;i++){
             numbers.add(rawServerData[i]);
         }
-
-        UserList.setAllPhoneNumbers(numbers);
+        allPhoneNumbers = numbers;
     }
 
+    private static ArrayList<String> allPhoneNumbers;
 
+    public static ArrayList<String> getAllPhoneNumbers() {
+        return allPhoneNumbers;
+    }
 }
