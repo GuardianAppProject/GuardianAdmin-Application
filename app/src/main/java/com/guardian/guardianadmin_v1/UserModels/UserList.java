@@ -103,5 +103,7 @@ public class UserList {
         }
     }
 
-
+    public static void clearAllUsers() {
+        allUsers.clear();
+    }
 }
