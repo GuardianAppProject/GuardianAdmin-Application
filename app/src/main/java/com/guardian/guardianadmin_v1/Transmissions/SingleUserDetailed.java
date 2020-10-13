@@ -97,15 +97,15 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
         SingleUserWorker singleUserWorker = new SingleUserWorker();
         singleUserWorker.execute(token,number);
 
-        if(ans.split(" ").length != 6){
+        if(ans.split(" ").length != 15){
             return null;
         }
-
+        String[] result = ans.split(" ");
         String[] retVal = new String[4];
         retVal[0] = number;
-        retVal[1] = ans.split(" ")[3];
-        retVal[2] = ans.split(" ")[4];
-        retVal[3] = ans.split(" ")[5];
+        for(int i=1;i<13;i++){
+            retVal[i] = result[i+2];
+        }
         return retVal;
     }
 
