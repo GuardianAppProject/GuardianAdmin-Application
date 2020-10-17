@@ -83,6 +83,7 @@ public class UserList {
     }
 
     public static void updatePhoneNumbers(){
+        clearAllUsers();
         AllPhoneGetter.updateData(MainActivity.getToken());
     }
 

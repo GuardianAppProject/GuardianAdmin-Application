@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
+import com.guardian.guardianadmin_v1.Transmissions.SingleUserDetailed;
 import com.guardian.guardianadmin_v1.UserModels.UserList;
 import com.guardian.guardianadmin_v1.UserModels.UserListAdapter;
 
@@ -151,7 +152,12 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         Intent intent = new Intent(this, MainUserActivity.class);
         System.out.println("pos: " + position);
         intent.putExtra("username", UserList.getAllUsers().get(position).getPhoneNumber());
-        System.out.println(UserList.getAllUsers().get(position).getPhoneNumber());
+        //inja mitonim data ro update konim
+        String phoneNumber = UserList.getAllUsers().get(position).getPhoneNumber();
+        System.out.println(phoneNumber);
+        SingleUserDetailed.getUserDetailed(MainActivity.getToken(),phoneNumber);
+        //
+
         startActivity(intent);
         finish();
     }

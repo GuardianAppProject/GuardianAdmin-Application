@@ -66,4 +66,8 @@ public class MainUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static void updateUserData(String[] data){
+        //inja ans.split dare az onvar miad, chizmiz haro tike tike mikonim set mikonim roye textbox haye xml
+    }
 }

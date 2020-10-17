@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 
 import com.guardian.guardianadmin_v1.MainActivity;
+import com.guardian.guardianadmin_v1.MainUserActivity;
 import com.guardian.guardianadmin_v1.SignInActivity;
 
 import java.io.BufferedReader;
@@ -67,6 +68,7 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
             httpURLConnection.disconnect();
             System.err.println(result);
             ans = result;
+            MainUserActivity.updateUserData(ans.split(" "));
             return result;
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -92,21 +94,10 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
         super.onProgressUpdate(values);
     }
 
-    public static String[] getUserDetailed(String token,String number){
+    public static void getUserDetailed(String token,String number){
 
         SingleUserWorker singleUserWorker = new SingleUserWorker();
         singleUserWorker.execute(token,number);
-
-        if(ans.split(" ").length != 15){
-            return null;
-        }
-        String[] result = ans.split(" ");
-        String[] retVal = new String[4];
-        retVal[0] = number;
-        for(int i=1;i<13;i++){
-            retVal[i] = result[i+2];
-        }
-        return retVal;
     }
 
 }
