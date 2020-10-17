@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.guardian.guardianadmin_v1.MainActivity;
 import com.guardian.guardianadmin_v1.SignInActivity;
+import com.guardian.guardianadmin_v1.UserModels.UserList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,6 +21,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Arrays;
+
 import static java.lang.Thread.sleep;
 
 public class SingleUserWorker extends AsyncTask<String, Void, String> {
@@ -67,6 +70,15 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
             httpURLConnection.disconnect();
             System.err.println(result);
             ans = result;
+            if(ans.split(" ").length == 6){
+                String[] retVal = new String[4];
+                retVal[0] = number;
+                retVal[1] = ans.split(" ")[3];
+                retVal[2] = ans.split(" ")[4];
+                retVal[3] = ans.split(" ")[5];
+                new UserList(retVal[1],retVal[0],Double.parseDouble(retVal[3]),Double.parseDouble(retVal[2]));
+                System.err.println(retVal);
+            }
             return result;
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -92,7 +104,7 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
         super.onProgressUpdate(values);
     }
 
-    public static String[] getUserByNum(String token,String number){
+    public static void getUserByNum(String token,String number){
 
         SingleUserWorker singleUserWorker = new SingleUserWorker();
         singleUserWorker.execute(token,number);
@@ -101,16 +113,8 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
         }catch (Exception e){
 
         }*/
-        if(ans.split(" ").length != 6){
-            return null;
-        }
 
-        String[] retVal = new String[4];
-        retVal[0] = number;
-        retVal[1] = ans.split(" ")[3];
-        retVal[2] = ans.split(" ")[4];
-        retVal[3] = ans.split(" ")[5];
-        return retVal;
+
     }
 
 }

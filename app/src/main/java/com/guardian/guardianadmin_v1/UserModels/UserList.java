@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import static java.lang.Thread.sleep;
 
@@ -50,6 +51,11 @@ public class UserList {
 
         updatePhoneNumbers();
         //inja miaim user haro migirim
+        try {
+            sleep(1000);
+        } catch (Exception e){
+
+        }
         if(allUsers.isEmpty()) {
             new UserList("ali", "0912433434", 45, 120);
         }
@@ -77,29 +83,13 @@ public class UserList {
     }
 
     public static void updatePhoneNumbers(){
-        ArrayList<String> allPhoneNumbers;
         AllPhoneGetter.updateData(MainActivity.getToken());
-        allPhoneNumbers = AllPhoneGetter.getAllPhoneNumbers();
-        try{
-            sleep(100);
-        }catch (Exception e){
+    }
 
-        }
+    public static void continueUpdate(ArrayList<String> allPhoneNumbers){
         System.out.println(allPhoneNumbers);
         for(String number : allPhoneNumbers){
             SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
-            try {
-                sleep(300);
-            }catch (Exception e){
-
-            }
-            String[] user = SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
-            System.out.println(Arrays.toString(user));
-            if(user == null)
-                continue;
-            if(user.length != 4)
-                continue;
-            new UserList(user[1],user[0],Double.parseDouble(user[3]),Double.parseDouble(user[2]));
         }
     }
 

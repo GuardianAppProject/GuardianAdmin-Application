@@ -151,6 +151,7 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         Intent intent = new Intent(this, MainUserActivity.class);
         System.out.println("pos: " + position);
         intent.putExtra("username", UserList.getAllUsers().get(position).getPhoneNumber());
+        System.out.println(UserList.getAllUsers().get(position).getPhoneNumber());
         startActivity(intent);
         finish();
     }

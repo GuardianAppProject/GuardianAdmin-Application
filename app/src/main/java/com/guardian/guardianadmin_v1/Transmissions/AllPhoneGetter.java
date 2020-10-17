@@ -71,6 +71,17 @@ public class AllPhoneGetter extends AsyncTask<String,Void,String> {
                 httpURLConnection.disconnect();
                 System.err.println(result);
                 ans = result;
+                String[] rawServerData = ans.split(" ");
+                if(!ans.startsWith("Connected - ")){
+                    return result;
+                }
+                ArrayList<String> numbers = new ArrayList<>();
+
+                for(int i=2;i<rawServerData.length-1;i++){
+                    numbers.add(rawServerData[i]);
+                }
+                allPhoneNumbers = numbers;
+                UserList.continueUpdate(allPhoneNumbers);
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -99,25 +110,9 @@ public class AllPhoneGetter extends AsyncTask<String,Void,String> {
     public static void updateData(String token){
         AllPhoneGetter getter = new AllPhoneGetter();
         getter.execute("check",token);
-        try{
-            sleep(200);
-        }catch (Exception e){
-
-        }
-        System.out.println(ans);
-        String[] rawServerData = ans.split(" ");
-        if(!ans.startsWith("Connected - ")){
-            return;
-        }
-        ArrayList<String> numbers = new ArrayList<>();
-
-        for(int i=2;i<rawServerData.length-1;i++){
-            numbers.add(rawServerData[i]);
-        }
-        allPhoneNumbers = numbers;
     }
 
-    private static ArrayList<String> allPhoneNumbers;
+    private static ArrayList<String> allPhoneNumbers = new ArrayList<>();
 
     public static ArrayList<String> getAllPhoneNumbers() {
         return allPhoneNumbers;
