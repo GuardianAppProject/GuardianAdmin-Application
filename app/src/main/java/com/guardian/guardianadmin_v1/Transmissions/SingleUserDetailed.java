@@ -66,6 +66,7 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
             bufferedReader.close();
             inputStream.close();
             httpURLConnection.disconnect();
+            System.err.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             System.err.println(result);
             ans = result;
             MainUserActivity.updateUserData(ans.split(" "));
@@ -95,8 +96,7 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
     }
 
     public static void getUserDetailed(String token,String number){
-
-        SingleUserWorker singleUserWorker = new SingleUserWorker();
+        SingleUserDetailed singleUserWorker = new SingleUserDetailed();
         singleUserWorker.execute(token,number);
     }
 

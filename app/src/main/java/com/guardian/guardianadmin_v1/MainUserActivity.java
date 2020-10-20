@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
@@ -69,5 +71,6 @@ public class MainUserActivity extends AppCompatActivity {
 
     public static void updateUserData(String[] data){
         //inja ans.split dare az onvar miad, chizmiz haro tike tike mikonim set mikonim roye textbox haye xml
+
     }
 }
