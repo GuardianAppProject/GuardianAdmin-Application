@@ -25,6 +25,7 @@ import static java.lang.Thread.sleep;
 
 public class SingleUserDetailed extends AsyncTask<String, Void, String> {
     private static String ans = "asd";
+    private static String[] data = new String[15];
 
     public SingleUserDetailed() {
     }
@@ -69,6 +70,7 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
             System.err.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             System.err.println(result);
             ans = result;
+            data = ans.split(" ");
             MainUserActivity.updateUserData(ans.split(" "));
             return result;
         } catch (MalformedURLException e) {
@@ -100,4 +102,7 @@ public class SingleUserDetailed extends AsyncTask<String, Void, String> {
         singleUserWorker.execute(token,number);
     }
 
+    public static String[] getData() {
+        return data;
+    }
 }

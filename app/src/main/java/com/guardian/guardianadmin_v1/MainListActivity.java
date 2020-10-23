@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.guardian.guardianadmin_v1.Transmissions.SingleUserDetailed;
 import com.guardian.guardianadmin_v1.UserModels.UserList;
 import com.guardian.guardianadmin_v1.UserModels.UserListAdapter;
+import static java.lang.Thread.sleep;
 
 public class MainListActivity extends AppCompatActivity implements UserListAdapter.OnItemListener {
 
@@ -157,6 +158,11 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         System.out.println(phoneNumber);
         SingleUserDetailed.getUserDetailed(MainActivity.getToken(),phoneNumber);
         //
+        try{
+            sleep(250);
+        }catch (Exception e){
+
+        }
 
         startActivity(intent);
         finish();
