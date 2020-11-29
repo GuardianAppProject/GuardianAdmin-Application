@@ -63,25 +63,25 @@ public class MainUserActivity extends AppCompatActivity {
         String safety = data[4];
         textView1.setText(safety);
         String speed = data[5];
-        textView2.setText(speed);
+        textView2.setText(EncodeDecode.speedDecode(Double.parseDouble(speed)));
         String nonstop = data[6];
-        textView3.setText(nonstop);
+        textView3.setText(EncodeDecode.withoutStopDecode(Double.parseDouble(nonstop)));
         String vibration = data[7];
-        textView4.setText(vibration);
+        textView4.setText(EncodeDecode.vibrationDecode(Double.parseDouble(vibration)));
         String sleep = data[8];
-        textView5.setText(sleep);
+        textView5.setText(EncodeDecode.sleepDecode(Double.parseDouble(sleep)));
         String acceleration = data[9];
-        textView6.setText(acceleration);
+        textView6.setText(EncodeDecode.sleepDecode(Double.parseDouble(acceleration)));
         String time = data[10];
-        textView7.setText(time);
+        textView7.setText(EncodeDecode.timeDecode(Double.parseDouble(time)));
         String danger_zone = data[11];
-        textView8.setText(danger_zone);
+        textView8.setText(EncodeDecode.nearCitiesDecode(Double.parseDouble(danger_zone)));
         String weather = data[12];
-        textView9.setText(weather);
+        textView9.setText(EncodeDecode.weatherDecode(Double.parseDouble(weather)));
         String road_type = data[13];
-        textView10.setText(road_type);
+        textView10.setText(EncodeDecode.roadTypeDecode(Double.parseDouble(road_type)));
         String traffic = data[14];
-        textView11.setText(traffic);
+        textView11.setText(EncodeDecode.monthDecode(Double.parseDouble(traffic)));
 
 
 
