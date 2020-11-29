@@ -13,7 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aminography.primecalendar.PrimeCalendar;
+import com.aminography.primecalendar.common.operators.CalendarField;
+
 import java.util.Arrays;
+import java.util.Calendar;
 
 import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
@@ -103,6 +107,13 @@ public class MainUserActivity extends AppCompatActivity {
                             public void onDateSelected(PersianCalendar persianCalendar) {
 
                                 Toast.makeText(MainUserActivity.this, persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay(), Toast.LENGTH_SHORT).show();
+                                PrimeCalendar primeCalendar = new com.aminography.primecalendar.persian.PersianCalendar();
+                                primeCalendar.set(Calendar.DAY_OF_MONTH,persianCalendar.getPersianDay());
+                                primeCalendar.set(Calendar.MONTH,persianCalendar.getPersianMonth());
+                                primeCalendar.set(Calendar.YEAR,persianCalendar.getPersianYear());
+                                System.err.println(persianCalendar.getPersianMonthName());
+                                System.err.println("===========:::");
+                                System.err.println(primeCalendar.toCivil().getMonth()+primeCalendar.toCivil().getDayOfMonth()+primeCalendar.toCivil().getYear());
                             }
 
                             @Override
