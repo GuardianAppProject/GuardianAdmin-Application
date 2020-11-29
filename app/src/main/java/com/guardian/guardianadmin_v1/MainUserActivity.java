@@ -63,7 +63,7 @@ public class MainUserActivity extends AppCompatActivity {
         String safety = data[4];
         textView1.setText(safety);
         String speed = data[5];
-        textView2.setText(EncodeDecode.speedDecode(Double.parseDouble(speed)));
+        /*textView2.setText(EncodeDecode.speedDecode(Double.parseDouble(speed)));
         String nonstop = data[6];
         textView3.setText(EncodeDecode.withoutStopDecode(Double.parseDouble(nonstop)));
         String vibration = data[7];
@@ -81,7 +81,7 @@ public class MainUserActivity extends AppCompatActivity {
         String road_type = data[13];
         textView10.setText(EncodeDecode.roadTypeDecode(Double.parseDouble(road_type)));
         String traffic = data[14];
-        textView11.setText(EncodeDecode.monthDecode(Double.parseDouble(traffic)));
+        textView11.setText(EncodeDecode.monthDecode(Double.parseDouble(traffic)));*/
 
 
 
@@ -113,7 +113,10 @@ public class MainUserActivity extends AppCompatActivity {
                                 primeCalendar.set(Calendar.YEAR,persianCalendar.getPersianYear());
                                 System.err.println(persianCalendar.getPersianMonthName());
                                 System.err.println("===========:::");
-                                System.err.println(primeCalendar.toCivil().getMonth()+primeCalendar.toCivil().getDayOfMonth()+primeCalendar.toCivil().getYear());
+                                System.err.println(primeCalendar.toCivil());
+                                System.err.println(primeCalendar.getShortDateString());
+
+
                             }
 
                             @Override
