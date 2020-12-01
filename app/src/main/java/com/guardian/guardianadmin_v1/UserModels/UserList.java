@@ -31,6 +31,10 @@ public class UserList {
         allUsers.add(this);
     }
 
+    public static void addToList(UserList userList) {
+        allUsers.add(userList);
+    }
+
     private void setName(String name) {
         this.name = name;
     }
@@ -55,9 +59,6 @@ public class UserList {
             sleep(1000);
         } catch (Exception e){
 
-        }
-        if(allUsers.isEmpty()) {
-            new UserList("ali", "0912433434", 45, 120);
         }
         return allUsers;
     }

@@ -119,4 +119,9 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         };
         return filter;
     }
+
+    public void updateData(ArrayList<UserList> data) {
+        this.data = data;
+        notifyDataSetChanged();
+    }
 }
