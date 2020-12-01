@@ -28,12 +28,12 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
     private DrawerLayout mDrawer;
     private NavigationView nvDrawer;
 
-
     // Adapter
     UserListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_list);
         //UserList.updatePhoneNumbers();
@@ -191,6 +191,9 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         return true;
     }
 
+    public static void updatePage(){
+        // in bayad listi ke yaro mibine ro beroz kone ke chizayi ke jadid add shodano bebine
+    }
 
 
     //    @Override

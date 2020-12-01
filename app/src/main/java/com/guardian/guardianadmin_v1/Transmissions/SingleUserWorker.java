@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 
 import com.guardian.guardianadmin_v1.MainActivity;
+import com.guardian.guardianadmin_v1.MainListActivity;
 import com.guardian.guardianadmin_v1.SignInActivity;
 import com.guardian.guardianadmin_v1.UserModels.UserList;
 
@@ -78,6 +79,7 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
                 retVal[3] = ans.split(" ")[5];
                 new UserList(retVal[1],retVal[0],Double.parseDouble(retVal[3]),Double.parseDouble(retVal[2]));
                 System.err.println(retVal);
+
             }
             return result;
         } catch (MalformedURLException e) {
@@ -108,11 +110,11 @@ public class SingleUserWorker extends AsyncTask<String, Void, String> {
 
         SingleUserWorker singleUserWorker = new SingleUserWorker();
         singleUserWorker.execute(token,number);
-        /*try {
-            sleep(100);
-        }catch (Exception e){
+        //try {
+        //    sleep(200);
+        //}catch (Exception e){
 
-        }*/
+        //}
 
 
     }

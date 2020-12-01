@@ -96,6 +96,7 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
     }
 
     public static void beginCheck(String token,Context ctx){
+        System.err.println("shshshshshshs----------------------------");
         TokenChecker checker = new TokenChecker(ctx);
         checker.execute("check",token);
     }
