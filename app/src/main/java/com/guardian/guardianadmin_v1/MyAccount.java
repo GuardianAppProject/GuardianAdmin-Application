@@ -22,7 +22,7 @@ public class MyAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
 
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,5 +93,12 @@ public class MyAccount extends AppCompatActivity {
         }
         return string;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(MyAccount.this, MainListActivity.class);
+        startActivity(i);
+        finish();
     }
 }

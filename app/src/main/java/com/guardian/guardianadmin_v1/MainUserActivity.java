@@ -61,7 +61,12 @@ public class MainUserActivity extends AppCompatActivity {
         String username = data[3];
         usernameText.setText(username);
         String safety = data[4];
-        textView1.setText(safety);
+        if(isNumeric(safety)) {
+            textView1.setText((Math.round(Double.parseDouble(safety) * 100.0) / 100.0) + "%");
+        } else {
+            textView1.setText(safety);
+        }
+
         String speed = data[5];
         if(isNumeric(speed)) {
             textView2.setText(EncodeDecode.speedDecode(Double.parseDouble(speed)));
@@ -186,5 +191,12 @@ public class MainUserActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(MainUserActivity.this, MainListActivity.class);
+        startActivity(i);
+        finish();
     }
 }

@@ -139,4 +139,25 @@ public class EncodeDecode {
 
         return String.format("%s", roadTypeOutput);
     }
+
+    public static String calculateStatusAlgorithm(double percentage) {
+        String status = "";
+        if(percentage >= 90) {
+            status = "بسیار ایمن";
+        } else if(percentage >= 70) {
+            status = "ایمن";
+        } else if(percentage >= 55) {
+            status = "نیازمند دقت";
+        } else if(percentage >= 48) {
+            status = "نیازمند دقت بالا";
+        } else if(percentage >= 40) {
+            status = "ناایمن";
+        } else if(percentage >= 30) {
+            status = "ایمنی بسیار پایین";
+        } else {
+            status = "بسیار خطرناک";
+        }
+
+        return status;
+    }
 }

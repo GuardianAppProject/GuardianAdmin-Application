@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.guardian.guardianadmin_v1.EncodeDecode;
 import com.guardian.guardianadmin_v1.R;
 
 import java.util.ArrayList;
@@ -41,9 +42,36 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserList userList = data.get(position);
         holder.nameTextView.setText(userList.getName());
-        holder.phoneNumberTextView.setText(userList.getPhoneNumber());
-        holder.speedTextView.setText(String.valueOf(userList.getSpeed()));
-        holder.averageTextView.setText(String.valueOf(userList.getAverage()));
+        holder.phoneNumberTextView.setText(englishToArabic(userList.getPhoneNumber()));
+        String status = EncodeDecode.calculateStatusAlgorithm(userList.getAverage());
+        if(userList.getAverage()<0) {
+            holder.speedTextView.setText(String.valueOf(userList.getSpeed()));
+            holder.averageTextView.setText(String.valueOf(userList.getAverage()));
+            holder.averageTextView2.setText("اطلاعات ناموجود");
+            holder.speedTextView2.setText("");
+        } else {
+            holder.speedTextView.setText(String.valueOf(englishToArabic(String.valueOf(userList.getSpeed()))));
+            holder.averageTextView.setText(String.valueOf(userList.getAverage()) + "%");// + "\n" + status);
+            holder.averageTextView2.setText(String.valueOf(EncodeDecode.calculateStatusAlgorithm(userList.getAverage())));
+            holder.speedTextView2.setText("km/h");
+        }
+    }
+
+    private String englishToArabic(String str) {
+        char[] arabicChars = {'٠','١','٢','٣','٤','٥','٦','٧','٨','٩'};
+        StringBuilder builder = new StringBuilder();
+        for(int i =0;i<str.length();i++)
+        {
+            if(Character.isDigit(str.charAt(i)))
+            {
+                builder.append(arabicChars[(int)(str.charAt(i))-48]);
+            }
+            else
+            {
+                builder.append(str.charAt(i));
+            }
+        }
+        return builder.toString();
     }
 
     @Override
@@ -56,6 +84,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         TextView phoneNumberTextView;
         TextView speedTextView;
         TextView averageTextView;
+        TextView averageTextView2;
+        TextView speedTextView2;
 
         OnItemListener onItemListener;
 
@@ -68,6 +98,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
             phoneNumberTextView = itemView.findViewById(R.id.phoneNumberTextView);
             speedTextView = itemView.findViewById(R.id.speedTextView);
             averageTextView = itemView.findViewById(R.id.averageTextView);
+            averageTextView2 = itemView.findViewById(R.id.averageTextView2);
+            speedTextView2 = itemView.findViewById(R.id.speedTextView2);
 
             itemView.setOnClickListener(this);
         }
@@ -120,8 +152,15 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         return filter;
     }
 
-    public void updateData(ArrayList<UserList> data) {
-        this.data = data;
+    public void updateData(ArrayList<UserList> newD) {
+        this.data.clear();
+        this.data.addAll(newD);
+        UserList.getAll().clear();
+        UserList.getAll().addAll(newD);
         notifyDataSetChanged();
+    }
+
+    public ArrayList<UserList> getData() {
+        return data;
     }
 }

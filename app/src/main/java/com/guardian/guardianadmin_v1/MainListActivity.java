@@ -22,7 +22,10 @@ import com.guardian.guardianadmin_v1.UserModels.User;
 import com.guardian.guardianadmin_v1.UserModels.UserList;
 import com.guardian.guardianadmin_v1.UserModels.UserListAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static java.lang.Thread.sleep;
 
@@ -62,13 +65,29 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
 
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         adapter = new UserListAdapter(this, UserList.getAllUsers(), this);
         recyclerView.setAdapter(adapter);
 
         Toolbar toolbar2 = findViewById(R.id.toolbar2);
         this.setSupportActionBar(toolbar2);
         this.getSupportActionBar().setTitle("");
+
+        Button sortBtn = (Button) findViewById(R.id.sortBtn);
+        sortBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(adapter.getData(), new Comparator<UserList>() {
+                    @Override
+                    public int compare(UserList lhs, UserList rhs) {
+                        // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                        return lhs.getAverage() > rhs.getAverage() ? -1 : (lhs.getAverage() < rhs.getAverage() ) ? 1 : 0;
+                    }
+                });
+                ArrayList<UserList> newList = new ArrayList<>(adapter.getData());
+                adapter.updateData(newList);
+            }
+        });
     }
 
 
@@ -111,22 +130,18 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
             case R.id.account:
                 Intent i = new Intent(MainListActivity.this, MyAccount.class);
                 startActivity(i);
-                finish();
                 break;
             case R.id.support:
                 Intent i2 = new Intent(MainListActivity.this, Support.class);
                 startActivity(i2);
-                finish();
                 break;
             case R.id.info:
                 Intent i3 = new Intent(MainListActivity.this, Info.class);
                 startActivity(i3);
-                finish();
                 break;
             case R.id.settings:
                 Intent i4 = new Intent(MainListActivity.this, Setting.class);
                 startActivity(i4);
-                finish();
                 break;
         }
 
@@ -157,9 +172,9 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
     public void onItemClick(int position) {
         Intent intent = new Intent(this, MainUserActivity.class);
         System.out.println("pos: " + position);
-        intent.putExtra("username", UserList.getAllUsers().get(position).getPhoneNumber());
+        intent.putExtra("username", adapter.getData().get(position).getPhoneNumber());
         //inja mitonim data ro update konim
-        String phoneNumber = UserList.getAllUsers().get(position).getPhoneNumber();
+        String phoneNumber = adapter.getData().get(position).getPhoneNumber();
         System.out.println(phoneNumber);
         SingleUserDetailed.getUserDetailed(MainActivity.getToken(),phoneNumber);
         //
@@ -170,7 +185,6 @@ public class MainListActivity extends AppCompatActivity implements UserListAdapt
         }
 
         startActivity(intent);
-        finish();
     }
 
     @Override

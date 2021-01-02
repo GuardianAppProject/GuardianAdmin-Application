@@ -25,8 +25,8 @@ public class UserList {
     public UserList(String name, String phoneNumber, double average, double speed) {
         setName(name);
         setPhoneNumber(phoneNumber);
-        setAverage(average);
-        setSpeed(speed);
+        setAverage(Math.round(average * 100.0) / 100.0);
+        setSpeed(Math.round(speed * 100.0) / 100.0);
 
         allUsers.add(this);
     }
@@ -60,6 +60,15 @@ public class UserList {
         } catch (Exception e){
 
         }
+        return allUsers;
+    }
+
+    public static ArrayList<UserList> getAll() {
+
+//        allUsers.add(new UserList("ali", "8342", 32, 35));
+//        allUsers.add(new UserList("ali2", "8342", 98, 54));
+//        allUsers.add(new UserList("ali3", "8342", 12, 34));
+//        allUsers.add(new UserList("ali4", "8342", 45, 76));
         return allUsers;
     }
 

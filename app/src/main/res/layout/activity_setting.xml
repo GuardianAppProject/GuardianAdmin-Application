@@ -15,8 +15,8 @@
         android:layout_weight="0.25"
         android:orientation="vertical">
         <ImageView
-            android:layout_width="93dp"
-            android:layout_height="93dp"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
             android:src="@drawable/logo"
             android:layout_gravity="center"
             android:layout_marginTop="55dp"/>
@@ -35,7 +35,7 @@
             android:layout_height="32dp"
             android:background="#9CAEF4">
 
-            <ImageButton
+            <Button
                 android:background="@drawable/back_icon"
                 android:layout_height="18dp"
                 android:layout_width="12dp"
@@ -44,19 +44,19 @@
                 android:layout_marginLeft="10dp"
                 android:id="@+id/backButton">
 
-            </ImageButton>
+            </Button>
 
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
                 android:layout_weight="0.8"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/ebtekar"
+                android:gravity="center_horizontal"
+                android:padding="6dp"
                 android:text="تنظیمات"
                 android:textAlignment="center"
-                android:padding="6dp"
-                android:textSize="16dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/ebtekar"
-                android:gravity="center_horizontal" >
+                android:textSize="16dp">
 
             </TextView>
 

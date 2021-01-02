@@ -20,7 +20,7 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainUserActivity" />
-        <activity android:name=".MainListActivity" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".MainListActivity" android:windowSoftInputMode="adjustPan" android:launchMode="singleTask" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

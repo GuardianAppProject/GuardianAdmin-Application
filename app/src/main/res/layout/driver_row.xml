@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
+    android:layout_height="92dp"
     android:paddingBottom="12dp"
     android:paddingTop="12dp"
     android:paddingRight="14dp"
-    android:paddingLeft="46dp"
+    android:paddingLeft="28dp"
     android:background="@drawable/item_background">
 
 
@@ -64,27 +64,60 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/iran_sans"
-        android:text="۱۰۵ km/h"
+        android:text="۱۰۵"
         android:textAlignment="center"
-        android:textSize="12sp"
-        android:layout_marginRight="48dp"
+        android:textSize="13sp"
+        android:layout_marginRight="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/averageTextView"
+        android:id="@+id/speedTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="@font/product_sans_bold"
-        android:text="96% بسیار ایمن"
+        android:layout_marginRight="53dp"
+        android:layout_marginLeft="4dp"
+        android:fontFamily="@font/iran_sans"
+        android:text="km/h"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/speedTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/averageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/product_sans_bold"
+            android:text="96%"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/averageTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/sadgan_medium"
+            android:text="بسیار ایمن"
+            android:textSize="13sp" />
+    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
