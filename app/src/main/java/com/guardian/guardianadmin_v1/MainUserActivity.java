@@ -160,7 +160,7 @@ public class MainUserActivity extends AppCompatActivity {
 
                                 System.err.println(persianCalendar.getPersianMonthName());
                                 System.err.println("===========:::");
-                                System.err.println(primeCalendar.toCivil().getMonth()+primeCalendar.toCivil().getDayOfMonth()+primeCalendar.toCivil().getYear());
+                                System.err.println(primeCalendar.toCivil().getMonth() + "-" + primeCalendar.toCivil().getDayOfMonth() + "-" + primeCalendar.toCivil().getYear());
                             }
 
                             @Override
