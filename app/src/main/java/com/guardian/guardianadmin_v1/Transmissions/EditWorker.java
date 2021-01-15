@@ -1,12 +1,11 @@
 package com.guardian.guardianadmin_v1.Transmissions;
-
+import android.app.Activity;
 import android.content.Context;
-import android.media.session.MediaSession;
 import android.os.AsyncTask;
+import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.guardian.guardianadmin_v1.MainActivity;
+import com.guardian.guardianadmin_v1.R;
 import com.guardian.guardianadmin_v1.SignInActivity;
 
 import java.io.BufferedReader;
@@ -21,22 +20,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class TokenChecker extends AsyncTask<String,Void,String> {
+public class EditWorker extends AsyncTask<String,Void,String> {
     Context context;
     private Toast toast;
-    private static String ans="asd";
 
-    public TokenChecker(Context ctx) {
+    public EditWorker(Context ctx) {
         context = ctx;
     }
 
     @Override
     protected String doInBackground(String... strings) {
         String type = strings[0];
-        String login_url = "https://www.guardianapp.ir/check_admin_token_55.php";
-        if (type.equals("check")) {
+        String login_url = "https://www.guardianapp.ir/editdata_admin.php";
+        if (type.equals("edit")) {
             try {
                 String token = strings[1];
+                String password = strings[2];
 
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -47,7 +46,7 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                String post_data = URLEncoder.encode("token", "UTF-8") + "=" + URLEncoder.encode(token, "UTF-8") ;
+                String post_data = URLEncoder.encode("token", "UTF-8") + "=" + URLEncoder.encode(token, "UTF-8") + "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -67,8 +66,8 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+                SignInActivity.setLoginResult(result);
                 System.err.println(result);
-                ans = result;
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -88,38 +87,25 @@ public class TokenChecker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         toast = Toast.makeText(context, result, Toast.LENGTH_LONG);
         toast.show();
+
+        TextView messageText = ((Activity)context).findViewById(R.id.messageTextAccount);
+        if(result.contains("OK")) {
+            messageText.setText("رمز عبور با موفقیت تغییر کرد.");
+            messageText.setTextColor(context.getResources().getColor(R.color.colorPositiveError));
+        } else if(result.contains("invalid characters were detected")) {
+            messageText.setText("لطفا از کاراکتر های غیر مجاز مثل '*' و 'فاصله' استفاده نکنید.");
+            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+        } else if(result.contains("Invalid Token")) {
+            messageText.setText("خطا در تغییر رمز عبور!");
+            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+        } else {
+            messageText.setText("سرور پاسخگو نمی باشد؛ لطفا چند دقیقه دیگر تلاش کنید.");
+            messageText.setTextColor(context.getResources().getColor(R.color.colorNegativeError));
+        }
     }
 
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
-    }
-
-    public static void beginCheck(String token,Context ctx){
-        System.err.println("shshshshshshs----------------------------");
-        TokenChecker checker = new TokenChecker(ctx);
-        checker.execute("check",token);
-    }
-
-    public static boolean tokenIsValid(){
-        return ans.startsWith("Connected - True");
-    }
-
-    public static String getUsername(){
-        if(tokenIsValid())
-            return ans.substring(17).split(" ")[1];
-        return "asd";
-    }
-
-    public static String getPhoneNum(){
-        if(tokenIsValid())
-            return ans.substring(17).split(" ")[0];
-        return "asd";
-    }
-
-    public static String getUserPass(){
-        if(tokenIsValid())
-            return ans.substring(17).split(" ")[2];
-        return "asd";
     }
 }
