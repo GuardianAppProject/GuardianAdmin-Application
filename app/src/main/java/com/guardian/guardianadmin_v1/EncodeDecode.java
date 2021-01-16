@@ -6,17 +6,27 @@ public class EncodeDecode {
         int hour = (int)Math.round(input / 60);
         int minute = (int)Math.round(input % 60);
 
+        if(hour<0 || minute<0){
+            return "--";
+        }
         return String.format("%dH:%dM",hour, minute);
     }
 
     public static String speedDecode(double input) {
 
         int speed = (int)Math.round(input);
+
+        if(speed<0){
+            return "--";
+        }
         return String.format("%d (Km/H)", speed);
     }
 
     public static String accelerationDecode(double input) {
 
+        if(input<0){
+            return "--";
+        }
         return String.format("%.2f (m2/s)", input);
     }
 
@@ -34,6 +44,8 @@ public class EncodeDecode {
             vibrationOutput = "لرزش زیاد";
         } else if(input == 4) {
             vibrationOutput = "لرزش بسیار زیاد";
+        } else {
+            return "--";
         }
         return String.format("%s", vibrationOutput);
     }
@@ -42,12 +54,18 @@ public class EncodeDecode {
         int hour = (int)Math.round(input / 60);
         int start = hour - 1;
         int end = hour + 1;
+        if(start<0 || end<0){
+            return "--";
+        }
         return String.format("%d:00 - %d:00", start, end);
     }
 
     public static String nearCitiesDecode(double input) {
 
         String nearCitiesOutput = "ایمن";
+        if(input < 0) {
+            return "--";
+        }
         if(input <= 3) {
             nearCitiesOutput = "بسیار ایمن";
         } else if(input <= 5) {
@@ -86,6 +104,8 @@ public class EncodeDecode {
             monthOutput = "بهمن";
         } else if(input == 12) {
             monthOutput = "اسفند";
+        } else {
+            monthOutput = "--";
         }
         return String.format("%s", monthOutput);
     }
@@ -93,6 +113,9 @@ public class EncodeDecode {
     public static String weatherDecode(double input) {
 
         String weather = "مناسب";
+        if(input < 0) {
+            return "--";
+        }
         if (input >= 92) {
             weather = "بسیار مناسب";
         } else if (input >= 85) {
@@ -113,6 +136,9 @@ public class EncodeDecode {
         int hour = (int)Math.round(input / 60);
         int minute = (int)Math.round(input % 60);
 
+        if(hour<0 || minute<0){
+            return "--";
+        }
         return String.format("%dH:%dM",hour, minute);
     }
 
@@ -123,6 +149,10 @@ public class EncodeDecode {
     public static String roadTypeDecode(double input) {
 
         String roadTypeOutput = "ایمن";
+        if(input < 0){
+            return "--";
+        }
+
        if(input >= 95) {
            roadTypeOutput = "کاملا ایمن";
        } else if(input >= 90) {
@@ -142,6 +172,9 @@ public class EncodeDecode {
 
     public static String calculateStatusAlgorithm(double percentage) {
         String status = "";
+        if(percentage < 0) {
+            return "اطلاعات ناموجود";
+        }
         if(percentage >= 90) {
             status = "بسیار ایمن";
         } else if(percentage >= 70) {

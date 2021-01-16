@@ -55,6 +55,7 @@ public class MainUserActivity extends AppCompatActivity {
         textView9 = findViewById(R.id.text9);
         textView10 = findViewById(R.id.text10);
         textView11 = findViewById(R.id.text11);
+        TextView safetyStatus = findViewById(R.id.safetyStatus);
 
         String number = data[2];
         phoneNumberText.setText(number);
@@ -63,6 +64,7 @@ public class MainUserActivity extends AppCompatActivity {
         String safety = data[4];
         if(isNumeric(safety)) {
             textView1.setText((Math.round(Double.parseDouble(safety) * 100.0) / 100.0) + "%");
+            safetyStatus.setText(EncodeDecode.calculateStatusAlgorithm(Math.round(Double.parseDouble(safety))));
         } else {
             textView1.setText(safety);
         }
