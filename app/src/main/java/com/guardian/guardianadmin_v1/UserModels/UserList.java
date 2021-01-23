@@ -99,9 +99,14 @@ public class UserList {
 
     public static void continueUpdate(ArrayList<String> allPhoneNumbers){
         System.out.println(allPhoneNumbers);
-        for(String number : allPhoneNumbers){
-            SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
-        }
+        (new Thread() {
+            public void run() {
+                for(String number : allPhoneNumbers){
+                    SingleUserWorker.getUserByNum(MainActivity.getToken(),number);
+                }
+            }
+        }).start();
+
     }
 
     public static void clearAllUsers() {
