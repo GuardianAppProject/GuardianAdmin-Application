@@ -197,9 +197,10 @@ public class MainUserActivity extends AppCompatActivity {
     }
 
     public static void updateUserData(String[] newData){
-        /*isDataReady = true;
+        isDataReady = true;
         data = newData;
 
+        /*
         //inja ans.split dare az onvar miad, chizmiz haro tike tike mikonim set mikonim roye textbox haye xml
         String number = data[2];
         phoneNumberText.setText(number);
