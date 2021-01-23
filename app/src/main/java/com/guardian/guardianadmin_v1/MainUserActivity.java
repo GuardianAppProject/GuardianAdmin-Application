@@ -1,10 +1,12 @@
 package com.guardian.guardianadmin_v1;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +17,10 @@ import android.widget.Toast;
 
 import com.aminography.primecalendar.PrimeCalendar;
 import com.aminography.primecalendar.common.operators.CalendarField;
+import com.guardian.guardianadmin_v1.Transmissions.SingleUserDated;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Calendar;
 
@@ -24,7 +29,8 @@ import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 
 public class MainUserActivity extends AppCompatActivity {
-    private TextView usernameText,phoneNumberText,textView1,textView2,textView3,textView4,textView5,textView6,textView7,textView8,textView9,textView10,textView11;
+    private static TextView usernameText,phoneNumberText,textView1,textView2,textView3,textView4,textView5,textView6,textView7,textView8,textView9,textView10,textView11;
+    private static TextView S;
     private static String[] data = new String[15];
     private static boolean isDataReady;
     @Override
@@ -56,6 +62,7 @@ public class MainUserActivity extends AppCompatActivity {
         textView10 = findViewById(R.id.text10);
         textView11 = findViewById(R.id.text11);
         TextView safetyStatus = findViewById(R.id.safetyStatus);
+        S = safetyStatus;
 
         String number = data[2];
         phoneNumberText.setText(number);
@@ -148,6 +155,7 @@ public class MainUserActivity extends AppCompatActivity {
                         .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)
                         .setShowInBottomSheet(true)
                         .setListener(new Listener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onDateSelected(PersianCalendar persianCalendar) {
 
@@ -157,12 +165,24 @@ public class MainUserActivity extends AppCompatActivity {
                                 primeCalendar.set(Calendar.MONTH,persianCalendar.getPersianMonth());
                                 primeCalendar.set(Calendar.YEAR,persianCalendar.getPersianYear());
 
+                                /*System.out.println(primeCalendar.getHourOfDay());
+                                if (primeCalendar.getHourOfDay() + 3 > 24 || (primeCalendar.getHourOfDay() + 4 > 24 && primeCalendar.getMinute() > 29)){
+                                    primeCalendar.setDayOfYear(primeCalendar.getDayOfYear()+1);
+                                }*/
+                                primeCalendar.setDayOfYear(primeCalendar.getDayOfYear() + 1);
+                                //System.out.println(primeCalendar.getHourOfDay());
+
                                 // Gregorian
                                 JalaliCalendar.jalaliToGregorian(new JalaliCalendar.YearMonthDate(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH));
 
-                                System.err.println(persianCalendar.getPersianMonthName());
-                                System.err.println("===========:::");
                                 System.err.println(primeCalendar.toCivil().getMonth() + "-" + primeCalendar.toCivil().getDayOfMonth() + "-" + primeCalendar.toCivil().getYear());
+
+                                //String timestamp = primeCalendar.toCivil().getYear()+"-"+primeCalendar.toCivil().getMonth()+"-"+primeCalendar.toCivil().getDayOfMonth()+"T"+primeCalendar.toCivil().getHourOfDay()+":"+primeCalendar.getMinute()+":"+primeCalendar.getSecond();
+                                //System.out.println(timestamp);
+                                LocalDateTime d = LocalDateTime.ofInstant(primeCalendar.getTime().toInstant(),ZoneId.systemDefault());
+                                SingleUserDated.getUserDetailed(MainActivity.getToken(),phoneNumberText.getText().toString(), d);
+
+
                             }
 
                             @Override
@@ -177,10 +197,82 @@ public class MainUserActivity extends AppCompatActivity {
     }
 
     public static void updateUserData(String[] newData){
-        isDataReady = true;
+        /*isDataReady = true;
         data = newData;
-        //inja ans.split dare az onvar miad, chizmiz haro tike tike mikonim set mikonim roye textbox haye xml
 
+        //inja ans.split dare az onvar miad, chizmiz haro tike tike mikonim set mikonim roye textbox haye xml
+        String number = data[2];
+        phoneNumberText.setText(number);
+        String username = data[3];
+        usernameText.setText(username);
+        String safety = data[4];
+        if(isNumeric(safety)) {
+            textView1.setText((Math.round(Double.parseDouble(safety) * 100.0) / 100.0) + "%");
+            S.setText(EncodeDecode.calculateStatusAlgorithm(Math.round(Double.parseDouble(safety))));
+        } else {
+            textView1.setText(safety);
+        }
+
+        String speed = data[5];
+        if(isNumeric(speed)) {
+            textView2.setText(EncodeDecode.speedDecode(Double.parseDouble(speed)));
+        } else {
+            textView2.setText(speed);
+        }
+        String nonstop = data[6];
+        if(isNumeric(nonstop)) {
+            textView3.setText(EncodeDecode.withoutStopDecode(Double.parseDouble(nonstop)));
+        } else {
+            textView3.setText(nonstop);
+        }
+        String vibration = data[7];
+        if(isNumeric(vibration)) {
+            textView4.setText(EncodeDecode.vibrationDecode(Double.parseDouble(vibration)));
+        } else {
+            textView4.setText(vibration);
+        }
+        String sleep = data[8];
+        if(isNumeric(sleep)) {
+            textView5.setText(EncodeDecode.sleepDecode(Double.parseDouble(sleep)));
+        } else {
+            textView5.setText(sleep);
+        }
+        String acceleration = data[9];
+        if(isNumeric(acceleration)) {
+            textView6.setText(EncodeDecode.sleepDecode(Double.parseDouble(acceleration)));
+        } else {
+            textView6.setText(acceleration);
+        }
+        String time = data[10];
+        if(isNumeric(time)) {
+            textView7.setText(EncodeDecode.timeDecode(Double.parseDouble(time)));
+        } else {
+            textView7.setText(time);
+        }
+        String danger_zone = data[11];
+        if(isNumeric(danger_zone)) {
+            textView8.setText(EncodeDecode.nearCitiesDecode(Double.parseDouble(danger_zone)));
+        } else {
+            textView8.setText(danger_zone);
+        }
+        String weather = data[12];
+        if(isNumeric(weather)) {
+            textView9.setText(EncodeDecode.weatherDecode(Double.parseDouble(weather)));
+        } else {
+            textView9.setText(weather);
+        }
+        String road_type = data[13];
+        if(isNumeric(road_type)) {
+            textView10.setText(EncodeDecode.roadTypeDecode(Double.parseDouble(road_type)));
+        } else {
+            textView10.setText(road_type);
+        }
+        String traffic = data[14];
+        if(isNumeric(traffic)) {
+            textView11.setText(EncodeDecode.monthDecode(Double.parseDouble(traffic)));
+        } else {
+            textView11.setText(traffic);
+        }*/
     }
 
     public static boolean isNumeric(String strNum) {

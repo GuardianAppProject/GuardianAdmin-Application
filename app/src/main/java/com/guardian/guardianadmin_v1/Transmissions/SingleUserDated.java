@@ -3,8 +3,11 @@ package com.guardian.guardianadmin_v1.Transmissions;
 import android.content.Context;
 import android.media.session.MediaSession;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.widget.Toast;
 
+
+import androidx.annotation.RequiresApi;
 
 import com.guardian.guardianadmin_v1.MainActivity;
 import com.guardian.guardianadmin_v1.MainUserActivity;
@@ -21,6 +24,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.time.LocalDateTime;
+
 import static java.lang.Thread.sleep;
 
 public class SingleUserDated extends AsyncTask<String, Void, String> {
@@ -70,7 +75,7 @@ public class SingleUserDated extends AsyncTask<String, Void, String> {
             bufferedReader.close();
             inputStream.close();
             httpURLConnection.disconnect();
-            System.err.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            System.err.println("aaaaaaaaaaaaaaaaaaakirkirkiraaaaaaaaaaaaaaaaaaa");
             System.err.println(result);
             ans = result;
             data = ans.split(" ");
@@ -100,9 +105,10 @@ public class SingleUserDated extends AsyncTask<String, Void, String> {
         super.onProgressUpdate(values);
     }
 
-    public static void getUserDetailed(String token,String number){
-        SingleUserDetailed singleUserWorker = new SingleUserDetailed();
-        singleUserWorker.execute(token,number);
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static void getUserDetailed(String token, String number, LocalDateTime d){
+        SingleUserDated singleUserWorker = new SingleUserDated();
+        singleUserWorker.execute(token,number,d.toString(),d.plusDays(1).toString());
     }
 
     public static String[] getData() {
